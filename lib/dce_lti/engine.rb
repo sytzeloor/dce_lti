@@ -36,12 +36,12 @@ launch_presentation_return_url
       ApplicationController.skip_before_filter :verify_authenticity_token, if: :cookieless_session?
     end
 
-    initializer 'dce_lti.add_middleware' do |app|
-      if config.enable_cookieless_sessions
-        app.middleware.insert_before ActionDispatch::Cookies, 'DceLti::Middleware::CookieShim'
-        app.middleware.use 'DceLti::Middleware::CookielessSessions'
-      end
-    end
+    # initializer 'dce_lti.add_middleware' do |app|
+    #   if config.enable_cookieless_sessions
+    #     app.middleware.insert_before ActionDispatch::Cookies, 'DceLti::Middleware::CookieShim'
+    #     app.middleware.use 'DceLti::Middleware::CookielessSessions'
+    #   end
+    # end
 
     isolate_namespace DceLti
 
