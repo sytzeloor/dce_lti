@@ -1,10 +1,12 @@
 require 'oauth/request_proxy/rack_request'
+require 'oauth/request_proxy/action_controller_request'
 
 module DceLti
   class SessionsController < ApplicationController
     include SessionHelpers
 
-    skip_before_filter :verify_authenticity_token, :authenticate_via_lti
+    # skip_before_filter :verify_authenticity_token, :authenticate_via_lti
+    skip_before_filter :verify_authenticity_token
 
     def create
       if valid_lti_request?(request)

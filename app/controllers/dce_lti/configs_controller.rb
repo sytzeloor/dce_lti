@@ -1,6 +1,8 @@
 module DceLti
   class ConfigsController < ApplicationController
-    skip_before_filter :authenticate_via_lti
+    # include ControllerMethods
+
+    # skip_before_filter :authenticate_via_lti
 
     def index
       tool_config = ::IMS::LTI::ToolConfig.new(
